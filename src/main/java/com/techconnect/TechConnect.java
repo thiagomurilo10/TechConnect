@@ -5,6 +5,8 @@
 
 package com.techconnect;
 
+import com.techconnect.view.TelaLogin;
+
 /**
  *
  * @author thiag
@@ -12,6 +14,7 @@ package com.techconnect;
 public class TechConnect {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        TelaLogin login = new TelaLogin();
+        login.setVisible(true);
     }
 }
