@@ -4,6 +4,10 @@
  */
 package com.techconnect.view;
 
+import com.techconnect.Admin;
+import com.techconnect.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thiag
@@ -44,7 +48,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        tituloTechConnect.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        tituloTechConnect.setFont(new java.awt.Font("Dialog", 1, 27)); // NOI18N
         tituloTechConnect.setForeground(new java.awt.Color(0, 0, 0));
         tituloTechConnect.setText("Tech Connect");
         tituloTechConnect.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -81,6 +85,11 @@ public class TelaLogin extends javax.swing.JFrame {
         botaoLogar.setForeground(new java.awt.Color(0, 0, 0));
         botaoLogar.setText("Entrar");
         botaoLogar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
+        botaoLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLogarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -173,8 +182,8 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(tituloTechConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(225, 225, 225))))
+                        .addComponent(tituloTechConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +194,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,6 +218,29 @@ public class TelaLogin extends javax.swing.JFrame {
     private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaTextFieldActionPerformed
+
+    private void botaoLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogarActionPerformed
+        String usuario = usuarioTextField.getText();
+        String senha = senhaTextField.getText();
+
+        Admin admin = new Admin(usuario, senha);
+        Usuario user = new Usuario(usuario, senha);
+
+        if (admin.validarLogin()) {
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Bem vindo, administrador!");
+            TelaAdmin telaAdm = new TelaAdmin();
+            telaAdm.setVisible(true);
+        } else if (user.validarLogin()) {
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Bem vindo, usúario");
+            TelaUsuario telaUser = new TelaUsuario();
+            telaUser.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Login inválido!");
+        }
+        
+    }//GEN-LAST:event_botaoLogarActionPerformed
 
     /**
      * @param args the command line arguments
