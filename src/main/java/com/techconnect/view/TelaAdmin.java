@@ -4,6 +4,10 @@
  */
 package com.techconnect.view;
 
+import com.techconnect.DAO.eventoDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thiag
@@ -29,6 +33,16 @@ public class TelaAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        nomeTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        descricaoTextField = new javax.swing.JTextField();
+        dataInicioTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        dataTerminoTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        botaoCadastrar = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,24 +50,117 @@ public class TelaAdmin extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(641, 423));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(java.awt.Color.black);
         jLabel3.setText("Cadastrar Eventos");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Nome:");
+
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTextField(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setText("Descrição:");
+
+        descricaoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descricaoTextField(evt);
+            }
+        });
+
+        dataInicioTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataInicioTextField(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setText("Data Inicio:");
+
+        dataTerminoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataTerminoTextField(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setText("Data Termino:");
+
+        botaoCadastrar.setBackground(new java.awt.Color(0, 153, 0));
+        botaoCadastrar.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastratActionPerformed(evt);
+            }
+        });
+
+        botaoSair.setBackground(new java.awt.Color(0, 153, 0));
+        botaoSair.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        botaoSair.setText("Sair");
+        botaoSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairbotaoCadastratActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(197, 197, 197))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataTerminoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(96, 96, 96)
                 .addComponent(jLabel3)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataTerminoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoSair)
+                    .addComponent(botaoCadastrar))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -73,6 +180,48 @@ public class TelaAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nomeTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextField
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeTextField
+
+    private void descricaoTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoTextField
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descricaoTextField
+
+    private void dataInicioTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataInicioTextField
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataInicioTextField
+
+    private void dataTerminoTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataTerminoTextField
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataTerminoTextField
+
+    private void botaoCadastratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastratActionPerformed
+        String nome = nomeTextField.getText();
+        String descricao = descricaoTextField.getText();
+        String dataInicio = dataInicioTextField.getText();
+        String dataTermino = dataTerminoTextField.getText();
+
+        eventoDAO eventoDAO = new eventoDAO();
+
+        try {
+            eventoDAO.cadastraEvento(nome, descricao, dataInicio, dataTermino);
+            JOptionPane.showMessageDialog(null, "Evento Cadastrado com Sucesso!!!");
+            nomeTextField.setText("");
+            descricaoTextField.setText("");
+            dataInicioTextField.setText("");
+            dataTerminoTextField.setText("");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar evento!!!");
+        }
+    }//GEN-LAST:event_botaoCadastratActionPerformed
+
+    private void botaoSairbotaoCadastratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairbotaoCadastratActionPerformed
+        this.setVisible(false);
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_botaoSairbotaoCadastratActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,7 +259,17 @@ public class TelaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCadastrar;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.JTextField dataInicioTextField;
+    private javax.swing.JTextField dataTerminoTextField;
+    private javax.swing.JTextField descricaoTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nomeTextField;
     // End of variables declaration//GEN-END:variables
 }

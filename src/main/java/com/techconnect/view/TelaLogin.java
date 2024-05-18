@@ -6,6 +6,8 @@ package com.techconnect.view;
 
 import com.techconnect.Admin;
 import com.techconnect.Usuario;
+import com.techconnect.DAO.admDAO;
+import com.techconnect.DAO.usuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -223,15 +225,15 @@ public class TelaLogin extends javax.swing.JFrame {
         String usuario = usuarioTextField.getText();
         String senha = senhaTextField.getText();
 
-        Admin admin = new Admin(usuario, senha);
-        Usuario user = new Usuario(usuario, senha);
+        usuarioDAO userDAO = new usuarioDAO();
+        admDAO admDAO = new admDAO();
 
-        if (admin.validarLogin()) {
+        if (admDAO.validarLogin(usuario,senha)) {
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Bem vindo, administrador!");
             TelaAdmin telaAdm = new TelaAdmin();
             telaAdm.setVisible(true);
-        } else if (user.validarLogin()) {
+        } else if (userDAO.validarLogin(usuario,senha)) {
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Bem vindo, usúario");
             TelaUsuario telaUser = new TelaUsuario();

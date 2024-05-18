@@ -21,18 +21,5 @@ public class Usuario {
         this.login = usuario;
         this.senha = senha;
     }
-
-    public boolean validarLogin() {
-        try (Connection conn = ConexaoBD.getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_Usuario WHERE login = ? AND senha = ?")) {
-            ps.setString(1, login);
-            ps.setString(2, senha);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            System.err.println("Erro ao validar login do usuário: " + e.getMessage());
-            return false;
-        }
-    }
     
 }
