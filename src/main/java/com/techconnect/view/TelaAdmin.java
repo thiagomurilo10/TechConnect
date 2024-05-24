@@ -6,6 +6,8 @@ package com.techconnect.view;
 
 import com.techconnect.DAO.eventoDAO;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +16,38 @@ import javax.swing.JOptionPane;
  */
 public class TelaAdmin extends javax.swing.JFrame {
 
+    private boolean emptyFields() {
+            boolean empty = true;
+
+            if (nomeTextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Nome não pode ser vazio.");
+            } else if (descricaoTextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Descrição não pode ser vazio.");
+            } else if (dataInicioTextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Data Início não pode ser vazio.");
+            } else if (dataTerminoTextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Data Término não pode ser vazio.");
+            } else {
+                empty = false;
+            }
+
+            return empty;
+        }
+
+        private boolean strTestes() {
+            boolean empty = true;
+
+            if (dataInicioTextField.getText().matches("[0-2]{1}[0-9]{3}[-][0-1]{1}[0-9]{1}[-][0-3]{1}[0-9]{1}") == false) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Data agendada precisa ser válida e no formato YYYY-MM-DD");
+            } else if (dataTerminoTextField.getText().matches("[0-2]{1}[0-9]{3}[-][0-1]{1}[0-9]{1}[-][0-3]{1}[0-9]{1}") == false) {
+                JOptionPane.showMessageDialog(rootPane, "ATENÇÃO! Data agendada precisa ser válida e no formato YYYY-MM-DD");
+            } else {
+                empty = false;
+            }
+
+            return empty;
+        }
+    
     /**
      * Creates new form TelaAdmin
      */
@@ -43,18 +77,22 @@ public class TelaAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         botaoCadastrar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
+        tituloTechConnect = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setPreferredSize(new java.awt.Dimension(641, 423));
+        jPanel1.setPreferredSize(new java.awt.Dimension(626, 578));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(java.awt.Color.black);
         jLabel3.setText("Cadastrar Eventos");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Nome:");
 
+        nomeTextField.setFont(new java.awt.Font("Dialog", 0, 19)); // NOI18N
         nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeTextField(evt);
@@ -62,14 +100,17 @@ public class TelaAdmin extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setForeground(java.awt.Color.black);
         jLabel2.setText("Descrição:");
 
+        descricaoTextField.setFont(new java.awt.Font("Dialog", 0, 19)); // NOI18N
         descricaoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descricaoTextField(evt);
             }
         });
 
+        dataInicioTextField.setFont(new java.awt.Font("Dialog", 0, 19)); // NOI18N
         dataInicioTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataInicioTextField(evt);
@@ -77,8 +118,10 @@ public class TelaAdmin extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setForeground(java.awt.Color.black);
         jLabel4.setText("Data Inicio:");
 
+        dataTerminoTextField.setFont(new java.awt.Font("Dialog", 0, 19)); // NOI18N
         dataTerminoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataTerminoTextField(evt);
@@ -86,10 +129,12 @@ public class TelaAdmin extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setForeground(java.awt.Color.black);
         jLabel5.setText("Data Termino:");
 
-        botaoCadastrar.setBackground(new java.awt.Color(0, 153, 0));
+        botaoCadastrar.setBackground(new java.awt.Color(102, 184, 16));
         botaoCadastrar.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        botaoCadastrar.setForeground(java.awt.Color.black);
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,8 +143,9 @@ public class TelaAdmin extends javax.swing.JFrame {
             }
         });
 
-        botaoSair.setBackground(new java.awt.Color(0, 153, 0));
+        botaoSair.setBackground(new java.awt.Color(255, 102, 102));
         botaoSair.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        botaoSair.setForeground(java.awt.Color.black);
         botaoSair.setText("Sair");
         botaoSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
@@ -108,59 +154,71 @@ public class TelaAdmin extends javax.swing.JFrame {
             }
         });
 
+        tituloTechConnect.setBackground(java.awt.Color.black);
+        tituloTechConnect.setFont(new java.awt.Font("Dialog", 1, 29)); // NOI18N
+        tituloTechConnect.setForeground(java.awt.Color.black);
+        tituloTechConnect.setText("Tech Connect");
+        tituloTechConnect.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataTerminoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 89, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataTerminoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloTechConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)))
+                .addGap(95, 95, 95))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(25, 25, 25)
+                .addComponent(tituloTechConnect)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel3)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(dataInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataTerminoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoSair)
-                    .addComponent(botaoCadastrar))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoCadastrar)
+                    .addComponent(botaoSair))
+                .addGap(80, 80, 80))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,13 +226,13 @@ public class TelaAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -198,11 +256,30 @@ public class TelaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_dataTerminoTextField
 
     private void botaoCadastratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastratActionPerformed
+        
+        
+    
+        if (!emptyFields()) {
+            if (!strTestes()) {
+            }
+        }
+        
         String nome = nomeTextField.getText();
         String descricao = descricaoTextField.getText();
-        String dataInicio = dataInicioTextField.getText();
-        String dataTermino = dataTerminoTextField.getText();
+        String dataInicioStr = dataInicioTextField.getText();
+        String dataTerminoStr = dataTerminoTextField.getText();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date dataInicio = null;
+        java.sql.Date dataTermino = null;
+        
+        try {
+            dataInicio = new java.sql.Date(sdf.parse(dataInicioStr).getTime());
+            dataTermino = new java.sql.Date(sdf.parse(dataTerminoStr).getTime());
+        } catch (ParseException e) {
+            return; // Saia do método se a conversão falhar
+        }
+        
         eventoDAO eventoDAO = new eventoDAO();
 
         try {
@@ -271,5 +348,6 @@ public class TelaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nomeTextField;
+    private javax.swing.JLabel tituloTechConnect;
     // End of variables declaration//GEN-END:variables
 }

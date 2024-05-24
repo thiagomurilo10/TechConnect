@@ -50,8 +50,9 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        tituloTechConnect.setFont(new java.awt.Font("Dialog", 1, 27)); // NOI18N
-        tituloTechConnect.setForeground(new java.awt.Color(0, 0, 0));
+        tituloTechConnect.setBackground(java.awt.Color.black);
+        tituloTechConnect.setFont(new java.awt.Font("Dialog", 1, 29)); // NOI18N
+        tituloTechConnect.setForeground(java.awt.Color.black);
         tituloTechConnect.setText("Tech Connect");
         tituloTechConnect.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
@@ -59,11 +60,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.darkGray, java.awt.Color.darkGray, null, java.awt.Color.darkGray));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(java.awt.Color.black);
         jLabel2.setText("Usúario: ");
 
         usuarioTextField.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        usuarioTextField.setForeground(new java.awt.Color(0, 0, 0));
         usuarioTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioTextFieldActionPerformed(evt);
@@ -71,20 +71,19 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(java.awt.Color.black);
         jLabel3.setText("Senha:");
 
         senhaTextField.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        senhaTextField.setForeground(new java.awt.Color(0, 0, 0));
         senhaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaTextFieldActionPerformed(evt);
             }
         });
 
-        botaoLogar.setBackground(new java.awt.Color(0, 153, 0));
+        botaoLogar.setBackground(new java.awt.Color(102, 184, 16));
         botaoLogar.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        botaoLogar.setForeground(new java.awt.Color(0, 0, 0));
+        botaoLogar.setForeground(java.awt.Color.black);
         botaoLogar.setText("Entrar");
         botaoLogar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
         botaoLogar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,8 +92,8 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jLabel4.setForeground(java.awt.Color.black);
         jLabel4.setText("Inicie sua sessão");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -139,12 +138,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.darkGray, java.awt.Color.darkGray, null, java.awt.Color.darkGray));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(java.awt.Color.black);
         jLabel5.setText("Não tem uma conta?");
 
         botaoCadastrar.setBackground(new java.awt.Color(153, 204, 255));
         botaoCadastrar.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        botaoCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        botaoCadastrar.setForeground(java.awt.Color.black);
         botaoCadastrar.setText("Cadastre-se");
         botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(153, 204, 255), null, null));
 
@@ -185,7 +184,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(tituloTechConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159))))
+                        .addGap(168, 168, 168))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +195,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

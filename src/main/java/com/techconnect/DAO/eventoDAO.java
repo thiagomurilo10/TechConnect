@@ -7,7 +7,6 @@ package com.techconnect.DAO;
 import com.techconnect.ConexaoBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -15,13 +14,13 @@ import java.sql.SQLException;
  * @author 824145766
  */
 public class eventoDAO {
-    public void cadastraEvento(String nome,String descricao,String dataInicio, String dataTermino) throws SQLException{
+    public void cadastraEvento(String nome,String descricao,java.sql.Date dataInicio, java.sql.Date dataTermino) throws SQLException{
          try (Connection conn = ConexaoBD.getConnection();
-            PreparedStatement ps = conn.prepareStatement("{call sp_CadastroEvento(?, ?, ?, ?)}")) {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO tbl_Evento (nomeEvento, descricao, dataInicio, dataFinal) VALUES (?, ?, ?, ?)")) {
             ps.setString(1, nome);
             ps.setString(2, descricao);
-            ps.setString(3, dataInicio);
-            ps.setString(4, dataTermino);
+            ps.setDate(3, dataInicio);
+            ps.setDate(4, dataTermino);
             ps.executeUpdate();           
         } catch (SQLException e) {
             System.err.println("Erro ao cadastrar evento: " + e.getMessage());

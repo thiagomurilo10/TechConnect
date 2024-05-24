@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class usuarioDAO {
      public boolean validarLogin(String login, String senha) {
         try (Connection conn = ConexaoBD.getConnection();
-             PreparedStatement ps = conn.prepareStatement("{call sp_SelecionaPessoaTblUsuario(?, ?)}")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_Usuario WHERE login = ? AND senha = ?")) {
             ps.setString(1, login);
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
