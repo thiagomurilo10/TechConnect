@@ -4,7 +4,7 @@
  */
 package com.techconnect.view;
 
-import com.techconnect.DAO.eventoDAO;
+import com.techconnect.DAO.EventoDAO;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -280,7 +280,7 @@ public class TelaAdmin extends javax.swing.JFrame {
             return; // Saia do método se a conversão falhar
         }
         
-        eventoDAO eventoDAO = new eventoDAO();
+        EventoDAO eventoDAO = new EventoDAO();
 
         try {
             eventoDAO.cadastraEvento(nome, descricao, dataInicio, dataTermino);

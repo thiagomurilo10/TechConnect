@@ -6,8 +6,8 @@ package com.techconnect.view;
 
 import com.techconnect.Admin;
 import com.techconnect.Usuario;
-import com.techconnect.DAO.admDAO;
-import com.techconnect.DAO.usuarioDAO;
+import com.techconnect.DAO.AdmDAO;
+import com.techconnect.DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,6 +146,11 @@ public class TelaLogin extends javax.swing.JFrame {
         botaoCadastrar.setForeground(java.awt.Color.black);
         botaoCadastrar.setText("Cadastre-se");
         botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(153, 204, 255), null, null));
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -224,8 +229,8 @@ public class TelaLogin extends javax.swing.JFrame {
         String usuario = usuarioTextField.getText();
         String senha = senhaTextField.getText();
 
-        usuarioDAO userDAO = new usuarioDAO();
-        admDAO admDAO = new admDAO();
+        UsuarioDAO userDAO = new UsuarioDAO();
+        AdmDAO admDAO = new AdmDAO();
 
         if (admDAO.validarLogin(usuario,senha)) {
             this.setVisible(false);
@@ -242,6 +247,12 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botaoLogarActionPerformed
+
+    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        this.setVisible(false);
+        TelaCadastrar telaCadastro = new TelaCadastrar();
+        telaCadastro.setVisible(true);
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

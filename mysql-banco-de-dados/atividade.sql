@@ -10,7 +10,7 @@ CREATE TABLE tbl_Usuario(
     idade VARCHAR(3) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    sexo VARCHAR(10) NOT NULL
+    sexo VARCHAR(30) NOT NULL
 );
 
 INSERT INTO tbl_Usuario(nomeUsuario, login, senha, idade, cpf, email, sexo) VALUES ("José", "usuario", "123", "23", "12345678912", "usuario@email.com", "Masculino");

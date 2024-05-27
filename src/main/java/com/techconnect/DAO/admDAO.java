@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author 824145766
  */
-public class admDAO {
+public class AdmDAO {
     public boolean validarLogin(String login, String senha) {
         try (Connection conn = ConexaoBD.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM tbl_Adm WHERE login = ? AND senha = ?")) {

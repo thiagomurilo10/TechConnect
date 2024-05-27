@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author 824145766
  */
-public class eventoDAO {
+public class EventoDAO {
     public void cadastraEvento(String nome,String descricao,java.sql.Date dataInicio, java.sql.Date dataTermino) throws SQLException{
          try (Connection conn = ConexaoBD.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO tbl_Evento (nomeEvento, descricao, dataInicio, dataFinal) VALUES (?, ?, ?, ?)")) {
