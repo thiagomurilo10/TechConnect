@@ -161,7 +161,7 @@ public class TelaCadastrar extends javax.swing.JFrame {
         botaoCadastrar.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botaoCadastrar.setForeground(java.awt.Color.black);
         botaoCadastrar.setText("Cadastrar");
-        botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
+        botaoCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, null));
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarbotaoCadastratActionPerformed(evt);
@@ -172,7 +172,7 @@ public class TelaCadastrar extends javax.swing.JFrame {
         botaoSair.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botaoSair.setForeground(java.awt.Color.black);
         botaoSair.setText("Sair");
-        botaoSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 0), null, null));
+        botaoSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, null));
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairbotaoCadastratActionPerformed(evt);
